@@ -1,25 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   renderContent() {
-    // console.log(this.props);
     switch (this.props.auth) {
       case null:
         return;
       case false:
-        return (
-          <li>
-            <a href="/auth/google">Login With Google</a>
-          </li>
-        );
+        return <li><a href="/auth/google">Login With Google</a></li>;
       default:
-        return (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
-        );
+        return <li><a href="/api/logout">Logout</a></li>;
     }
   }
 
@@ -28,15 +19,12 @@ class Header extends Component {
       <nav>
         <div className="nav-wrapper">
           <Link
-            to={this.props.auth ? "/surveys" : "/"}
+            to={this.props.auth ? '/surveys' : '/'}
             className="left brand-logo"
           >
             Emaily
           </Link>
           <ul className="right">
-            {/* <li>
-              <a href="/auth/google">Login With Google</a>
-            </li> */}
             {this.renderContent()}
           </ul>
         </div>
